@@ -1439,10 +1439,10 @@ tooltip.calls_dispatcher = {
 }
 
 tooltip.machine_window = {
-  toggle_machine_menu = "Haz clic para abrir el menú de máquinas",								
+  toggle_machine_menu = "Haz clic para abrir el menú de máquinas",
 }
 
-machine_menu = {																									 
+machine_menu = {
   machine = "Máquina",
   remaining_strength = "Restante",
   total_strength = "Fuerza",
@@ -1467,8 +1467,7 @@ tooltip.machine_menu = {
     ratio = "Porcentaje de fuerza restante en relación con la fuerza total de las máquinas",
     times_used = "Cantidad de veces que se ha usado la máquina.",
   },
-  close = "Cerrar la lista de máquinas",
-				
+  close = "Cerrar la lista de máquinas",			
 }
 
 update_window = {
