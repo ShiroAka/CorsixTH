@@ -33,16 +33,30 @@ tooltip.staff_list.prev_person = "Mostrar la página anterior"
 tooltip.status.reputation = "Tu reputación no debe estar por debajo de %d. Actualmente tienes %d"
 tooltip.status.balance = "No debes tener menos de $%d en el banco. Actualmente tienes $%d"
 
+fax.emergency.cure_not_possible_build = "Necesitas construir un %s"
+fax.emergency.cure_not_possible_build_and_employ = "Necesitas construir un %s y contratar un %s"
+fax.emergency.num_disease = "Hay %d personas con %s y necesitan ser atendidas inmediatamente."
+adviser.goals.lose.kill = "Mata otros %d pacientes para perder el nivel!"
+
 -- Improve tooltips in staff window to mention hidden features
-tooltip.staff_window.face = "Rostro de la persona - pulsa para abrir pantalla de recursos."
+tooltip.staff_window.face = "Rostro de la persona - pulsa para abrir la pantalla de gestión."
 tooltip.staff_window.center_view = "Botón izquierdo para fijarse en la persona, botón derecho para rotar entre los miembros del personal."
+
+-- Improve tooltips in Research Screen
+tooltip.research.cure_dec = "Decrease Cure research percentage"
+tooltip.research.cure_inc = "Increase Cure research percentage"
+tooltip.research.diagnosis_dec = "Decrease Diagnosis research percentage"
+tooltip.research.diagnosis_inc = "Increase Diagnosis research percentage"
+tooltip.research.drugs_dec = "Decrease Drugs research percentage"
+tooltip.research.improvements_dec = "Decrease Improvements research percentage"
+tooltip.research.improvements_inc = "Increase Improvements research percentage"
+tooltip.research.specialisation_dec = "Decrease Specialisation research percentage"
+tooltip.research.specialisation_inc = "Increase Specialisation research percentage"
 
 -- These strings are missing in some versions of TH (unpatched?)
 confirmation.restart_level = "¿Seguro que quieres reiniciar el nivel?"
 -- TODO adviser.multiplayer.objective_completed
 -- TODO adviser.multiplayer.objective_failed
-
-fax.emergency.num_disease = "Hay %d personas con %s y necesitan ser atendidas inmediatamente."
 
 tooltip.handyman_window.close = "Cerrar ventana"
 tooltip.machine_window.close = "Cerrar ventana"
@@ -655,6 +669,7 @@ menu_options = {
   jukebox = "  (%1%) REPRODUCTOR DE MUSICA  ",
   lock_windows = "  BLOQUEAR VENTANAS  ",
   edge_scrolling = "  DESPLAZAR POR BORDES  ",
+  capture_mouse = "  CAPTURAR RATON  ",
   adviser_disabled = "  (%1%) CONSEJERO  ",
   warmth_colors = "  COLORES DE TEMPERATURA  ",
   wage_increase = "  PETICIONES DE SUELDO  ",
@@ -701,6 +716,8 @@ menu_debug = {
   transparent_walls           = "  (%1%) PAREDES TRANSPARENTES  ",
   limit_camera                = "  LIMITAR CAMARA  ",
   disable_salary_raise        = "  DESACTIVAR SUBIDA DE SUELDO  ",
+  allow_blocking_off_areas    = "  PERMITIR BLOQUEAR AREAS  ",
+  allow_falling               = "  PERMITIR CAIDAS  ",
   make_debug_fax              = "  CREAR FAX DE DEPURACION  ",
   make_debug_patient          = "  CREAR PACIENTE DE DEPURACION  ",
   cheats                      = "  (%1%) TRUCOS  ",
@@ -746,6 +763,8 @@ adviser = {
     another_desk = "Necesitaras construir otro escritorio para la nueva recepcionista.",
     cannot_afford = "¡No tienes dinero para contratar a esa persona!", -- I can't see anything like this in the original strings
     cannot_afford_2 = "¡No tienes dinero para comprar eso!",
+	cannot_afford_machine = "Necesitas al menos $%1% en el banco para poder adquirir un nuevo %2%!",
+
     falling_1 = "¡Eh! No tiene gracia. Mira dónde haces clic con ese ratón, ¡vas a hacer daño a alguien!",
     falling_2 = "¿Te importaría dejar de perder el tiempo?",
     falling_3 = "¡Ay! Eso ha tenido que doler. ¡Llamen a un médico!",
@@ -760,16 +779,21 @@ adviser = {
     nurse_needs_desk_1 = "Cada enfermera necesita una mesa para trabajar.",
     nurse_needs_desk_2 = "Tu enfermera agradece que le hayas dado un descanso. Si pretendías tener a más personas trabajando en la enfermería, tienes que dar a cada una una mesa para que trabajen.",
     low_prices = "Estás cobrando muy poco por el uso de %s. Así atraerás a más personas a tu hospital, pero no te darán muchos beneficios.",
-    high_prices = "Estás cobrando mucho por el uso de %s. Así tendrás muchos beneficios a corto plazo, pero harás que los pacientes dejen de venir.",
+    high_prices = "Estás cobrando mucho por %s. Esto traerá muchos beneficios a corto plazo, pero harás que los pacientes dejen de venir.",
     fair_prices = "El precio de %s parece justo.",
     patient_not_paying = "¡Un paciente se ha ido sin pagar por %s porque es demasiado caro!",
+	no_doctor_no_gp_office = "Deberias construir una Consulta y contratar un doctor en algun momento!",
+    no_gp_office = "No has construido una Consulta donde tus doctores puedan diagnosticar a los pacientes!",
   },
   cheats = {
     th_cheat = "¡Felicidades, has desbloqueado los trucos!",
-    roujin_on_cheat = "¡Desafío de Roujin activado! Buena suerte...",
-    roujin_off_cheat = "Desafío de Roujin desactivado.",
+    roujin_on_cheat = "¡Desafío de Roujin activado! Buena suerte en los proximos meses...",
+    roujin_off_cheat = "Desafío de Roujin desactivado. Todo volverá a la normalidad pronto",
     norest_on_cheat = "Vaya! Parece que el personal consumió demasiada cafeína y ya no necesitan descansar.",
     norest_off_cheat = "Uf! Parece que el subidón se acabó. Tu personal ahora podrá descansar apropiadamente.",
+  },
+  staff_place_advice = {
+    not_enough_lecture_chairs = "Cada estudiante necesita una silla donde sentarse!",
   },
 }
 
@@ -820,9 +844,18 @@ install = {
   cancel = "Cancelar",
 }
 
-misc.not_yet_implemented = "(aún no implementado)"
-misc.no_heliport = "O no se han descubierto enfermedades, o no hay un helipuerto en este nivel.  Quizás te haga falta comprar una mesa de recepción y contratar a una recepcionista."
-misc.cant_treat_emergency = "Tu hospital no puede tratar esta emergencia debido a que la enfermedad no ha sido descubierta. Inténtalo de nuevo."
+misc = {
+  not_yet_implemented = "(aún no implementado)",
+  no_heliport = "O no se han descubierto enfermedades, o no hay un helipuerto en este nivel.  Quizás te haga falta comprar una mesa de recepción y contratar a una recepcionista.",
+  cant_treat_emergency = "Tu hospital no puede tratar esta emergencia debido a que la enfermedad no ha sido descubierta. Inténtalo de nuevo.",
+  epidemics_off = "Las epidemias se han deshabilitado. No se crearán nuevas epidemias",
+  epidemics_on = "Las epidemias han sido habilitadas nuevamente",
+  earthquakes_off = "Los terremotos se han deshabilitado",
+  earthquakes_on = "Los terremotos han sido habilitados nuevamente",
+  epidemic_no_icon_to_toggle = "No es posible mostrar/ocultar iconos de infección - no hay epidemias en progreso que no hayan sido reveladas",
+  epidemic_no_diseases = "No es posible crear una epidemia - no hay enfermedades contagiosas disponibles",
+  epidemic_no_receptionist = "No es posible crear una epidemia - no hay una recepcion que cuente con personal",
+}
 
 main_menu = {
   new_game = "Campaña",
@@ -833,6 +866,7 @@ main_menu = {
   options = "Opciones",
   map_edit = "Editor de mapas",
   savegame_version = "Versión del guardado: ",
+  updates_off = "No se buscarán actualizaciones",
   version = "Versión: ",
   exit = "Salir",
 }
@@ -851,6 +885,7 @@ tooltip.main_menu = {
 
 load_game_window = {
   caption = "Cargar partida (%1%)",
+  load_button = "Cargar",
 }
 
 tooltip.load_game_window = {
@@ -874,26 +909,32 @@ tooltip.custom_game_window = {
 custom_campaign_window = {
   caption = "Campaña personalizada",
   start_selected_campaign = "Comenzar campaña",
+  duplicates_warning = "Se han ocultado %d campañas con nombres duplicados",
 }
 
 tooltip.custom_campaign_window = {
   choose_campaign = "Selecciona una campaña para ver más información sobre la misma.",
   start_selected_campaign = "Cargar el primer nivel de esta campaña.",
+  duplicates_warning = "Verifica la consola para ver errores especificos",
 }
 
 save_game_window = {
   caption = "Guardar partida (%1%)",
   new_save_game = "Nueva partida guardada",
+  save_button = "Guardar",
+  missing_filename = "Por favor ingresa el nombre de la partida que deseas guardar o seleccione una existente para sobreescribirla.",
 }
 
 tooltip.save_game_window = {
-  save_game = "Sobrescribir guardado %s",
+  save_game = "Sobrescribir partida guardada %s",
   new_save_game = "Introduce el nombre de la partida guardada.",
 }
 
 save_map_window = {
   caption = "Guardar mapa (%1%)",
   new_map = "Nuevo mapa",
+  save_button = "Guardar",
+  missing_filename = "Por favor ingresa el nombre del nuevo archivo de mapa o selecciona uno existente para sobreescribirlo.",
 }
 
 tooltip.save_map_window = {
@@ -901,9 +942,15 @@ tooltip.save_map_window = {
   new_map = "Introduce el nombre del mapa guardado.",
 }
 
+load_map_window = {
+  caption = "Cargar Mapa (%1%)",
+  load_button = "Cargar",
+}
+
 menu_list_window = {
   name = "Nombre",
   save_date = "Modificado",
+  ok = "OK",
   back = "Atrás",
 }
 
@@ -918,8 +965,14 @@ options_window = {
   caption = "Opciones",
   option_on = "Sí",
   option_off = "No",
+  option_enabled = "Activado",
+  option_disabled = "Desactivado",
   fullscreen = "Pantalla Completa",
   resolution = "Resolución",
+  capture_mouse = "Capturar Ratón",
+  right_mouse_scrolling = "Desplazamiento con el Ratón",
+  right_mouse_scrolling_option_middle = "Botón Central",
+  right_mouse_scrolling_option_right = "Botón Derecho",
   custom_resolution = "Personalizar...",
   width = "Ancho",
   height = "Alto",
@@ -935,13 +988,16 @@ options_window = {
   zoom_speed = "Vel. de Acercamiento",
   hotkey = "Atajos de Teclado",
   check_for_updates = "Buscar Actualizaciones",
+  jukebox = "Reproductor",
 }
 
 tooltip.options_window = {
   fullscreen = "Ejecuta el juego en pantalla completa o en una ventana.",
-  fullscreen_button = "Pulsa aquí para activar el modo de pantalla completa.",
+  fullscreen_button = "Haz clic aquí para activar el modo de pantalla completa.",
   resolution = "Cambia la resolución en la que funcionará el juego.",
   select_resolution = "Selecciona una nueva resolución.",
+  capture_mouse = "Haz clic aqui para activar o desactivar la captura del cursor dentro del juego",
+  right_mouse_scrolling = "Cambiar el boton del ratón usado para desplazarse por el mapa",
   width = "Introduce el ancho de la pantalla.",
   height = "Introduce la altura de la pantalla.",
   apply = "Aplica la resolución seleccionada.",
@@ -965,6 +1021,7 @@ tooltip.options_window = {
   cancel_zoomspeed = "Vuelve sin cambiar la velocidad de acercamiento.",
   hotkey = "Cambia las teclas de acceso rápido.",
   check_for_updates = "Establece si el juego debería buscar actualizaciones al iniciar.",
+  jukebox = "Abre el Reproductor para controlar la música"
 }
 
 customise_window = {
@@ -992,6 +1049,7 @@ tooltip.customise_window = {
   aliens = "Debido a la falta de animaciones decentes disponibles, hemos hecho que los pacientes con ADN alienígena solo aparezcan en una emergencia. Para permitir que los pacientes con ADN alienígena puedan visitar tu hospital, desactiva esta opción.",
   fractured_bones = "Debido a una animación deficiente, hemos hecho que no existan pacientes con Fracturas óseas femeninas. Para permitir que las pacientes con Fracturas óseas visiten tu hospital, desactiva esta opción.",
   average_contents = "Activa esta opción si quieres que el juego recuerde los objetos adicionales que sueles añadir cuando construyes habitaciones.",
+  remove_destroyed_rooms = "Activa esta opcion si te gustaría poder eliminar habitaciones destruidas (por un precio)",
   back = "Cerrar este menú y volver al menú de opciones.",
 }
 
@@ -1067,7 +1125,7 @@ hotkey_window = {
   ingame_scroll_down = "Desplazar Hacia Abajo",
   ingame_scroll_left = "Desplazar Hacia la Izquierda",
   ingame_scroll_right = "Desplazar Hacia la Derecha",
-  ingame_scroll_shift = "Speed Shift",
+  ingame_scroll_shift = "Acelerar Desplazamiento",
   ingame_zoom_in = "Acercar",
   ingame_zoom_in_more = "Acercar Más",
   ingame_zoom_out = "Alejar",
@@ -1095,6 +1153,7 @@ hotkey_window = {
   ingame_panel_status = "Estado",
   ingame_panel_charts = "Charts",
   ingame_panel_policy = "Normas",
+  ingame_panel_machineMenu = "Menu de Máquinas",
   ingame_panel_map_alt = "Mapa de la Ciudad 2",
   ingame_panel_research_alt = "Investigación 2",
   ingame_panel_casebook_alt = "Historial 2",
@@ -1108,7 +1167,8 @@ hotkey_window = {
   ingame_quickLoad = "Carga Rápida",
   ingame_restartLevel = "Reiniciar Nivel",
   ingame_quitLevel = "Salir del Nivel",
-  ingame_setTransparent = "Transparente",
+  ingame_setTransparent = "Hacer Transparente",
+  ingame_toggleTransparent = "Activar Elementos Transparentes",
   ingame_toggleAnnouncements = "Activar Anuncios",
   ingame_toggleSounds = "Activar Sonidos",
   ingame_toggleMusic = "Activar Música",
@@ -1123,9 +1183,15 @@ tooltip.hotkey_window = {
   button_accept = "Aceptar y guardar las teclas de acceso rápido asignadas",
   button_defaults = "Reestablecer las teclas de acceso rápido a los valores por defecto",
   button_cancel = "Cancelar las teclas asignadas y volver al menú de opciones",
-  caption_panels = "Abre la ventana para asignar las teclas de acceso a los paneles",
+  panel_globalKeys = "Asignar atajos de teclado",
+  panel_generalInGameKeys = "Asignar atajos de teclado dentro del juego",
   button_gameSpeedKeys = "Abre la ventana para configurar las teclas que controlan la velocidad del juego",
+  panel_scrollKeys = "Asignar atajos para desplazar la pantalla",
+  panel_zoomKeys = "Asigna atajos para acercar o alejar la vista",
+  panel_toggleKeys = "Asignar atajos para activar/desactivar opciones",
+  caption_panels = "Abre la ventana para asignar las teclas de acceso a los paneles",
   button_recallPosKeys = "Abre la ventana para configurar las teclas que permiten almacenar y recuperar posiciones de la cámara",
+  panel_debugKeys = "Asignar atajos para depurar el juego",
   button_back_02 = "Volver a la ventana principal de teclás de acceso rápido. Las teclas de acceso rápido modificadas en esta ventana pueden ser aceptadas allí",
 }
 
@@ -1182,6 +1248,9 @@ errors = {
   dialog_missing_graphics = "Los archivos de datos de la demo no contienen esta ventana.",
   save_prefix = "Error al guardar la partida: ",
   load_prefix = "Error al cargar la partida: ",
+  load_map_prefix = "Error al cargar el mapa: ",
+  load_level_prefix = "Error al cargar el nivel: ",
+
   no_games_to_contine = "No hay partidas guardadas.",
   load_quick_save = "Error, no existe el guardado rápido y por tanto no se puede cargar, pero tranquilo, que acabamos de generar uno para ti.",
   map_file_missing = "¡No se ha podido encontrar el archivo de mapa %s de este nivel!",
@@ -1198,6 +1267,16 @@ errors = {
     demo_in_full = "Lo siento, no puedes abrir una partida guardada de la demo cuando los archivos del juego completo se encuentran cargados. Por favor actualiza la configuracion referente a tu carpeta de datos de Theme Hospital.",
     full_in_demo = "Lo siento, no puedes abrir una partida guardada del juego completo cuando los archivos de la demo se encuentran cargados. Por favor actualiza la configuracion referente a tu carpeta de datos de Theme Hospital.",
   },
+  music = "Hay problemas al intentar reproducir uno o más archivos en tu directorio de música. Los archivos problemáticos serán deshabilitados en el reproductor. Verifica la consola para obtener mas información.",
+  missing_corsixth_file = "Advertencia: No se pudo encontrar el archivo %s, intenta reinstalar CorsixTH.",
+  missing_th_data_file = "Advertencia: No se pudo encontrar el archivo %s, faltan datos de Theme Hospital.",
+  missing_level_file = "Error: No se pudo encontrar el archivo de nivel seleccionado.",
+  overlay = {
+    incorrect_difficulty = "La dificultad debe ser facil, full o dificil. El valor actual es ",
+    incorrect_level_number = "El número nivel debe estar entre 1 y 12. El valor actual es ",
+    missing_setting = "No se ha especificado la dificultad ni el numero de nivel para el nivel personalizado.",
+  },
+  cannot_restart_missing_files = "Sorry, but this level cannot be restarted because of missing files %s or %s.",
 }
 
 warnings = {
@@ -1213,7 +1292,9 @@ confirmation = {
   music_warning = "Nota: Necesitas el archivo smpeg.dll o el equivalente para tu sistema operativo, de lo contrario no tendrás música en el juego. ¿Quieres continuar?",
   remove_destroyed_room = "¿Te gustaría eliminar la habitación por $%d?",
   replace_machine_extra_info = "La nueva máquina tendrá una resistencia de %d (actualmente es de %d).",
-  very_old_save = "Ha habido muchas actualizaciones en el juego desde que comenzaste. Para asegurarte de que todas las características funcionen como se espera, ¿te gustaría reiniciar este nivel ahora?//" ..
+  restart_mapeditor = "¿Estás seguro que quieres reiniciar el editor de mapas?",
+  quit_mapeditor = "¿Estás seguro que quieres salir del editor de mapas?",
+  very_old_save = "Han habido muchas actualizaciones en el juego desde que comenzaste. Para asegurarte de que todas las características funcionen como se espera, ¿te gustaría reiniciar este nivel ahora?//" ..
   "Tu archivo de guardado anterior no se eliminará a menos que lo sobrescribas."
 }
 
@@ -1221,7 +1302,6 @@ information = {
   custom_game = "Bienvenido a CorsixTH. ¡Diviértete con este mapa personalizado!",
   no_custom_game_in_demo = "La versión demo no permite jugar a mapas personalizados.",
   cannot_restart = "Esta partida personalizada se guardó antes de que se implementara la característica de reiniciar.",
-  very_old_save = "Desde que empezaste a jugar en este nivel, el juego ha recibido muchas actualizaciones. Para asegurarte de que todas las características funcionen como es debido, deberías pensar en volver a empezar.",
   level_lost = {
     "¡Qué pena! Has fracasado en este nivel. ¡Ya tendrás más suerte la próxima vez!",
     "La razón por la que has perdido es:",
@@ -1229,6 +1309,8 @@ information = {
     balance = "Tu cuenta bancaria ha llegado a tener menos de %d.",
     percentage_killed = "Has matado a más de un %d por ciento de los pacientes.",
     cheat = "¡Espero que no hayas hecho clic en el botón 'Perder Nivel' por accidente!",
+	staff_happiness = "La felicidad promedio del personal cayó debajo de %d%.",
+    patient_happiness = "La felicidad promedio de los pacientes cayó debajo de %d%.",
   },
   cheat_not_possible = "No puedes usar ese truco en este nivel.",
 }
@@ -1289,9 +1371,11 @@ cheats_window = {
     all_research = "Truco de todo investigado",
     emergency = "Crear una emergencia",
     vip = "Crear un VIP",
+	toggle_earthquake = "Activar terremotos",
     earthquake = "Crear terremoto",
-    epidemic = "Generar un paciente contagioso",
-    toggle_infected = "Mostrar/ocultar iconos de infección",
+	toggle_epidemic = "Activar epidemias",
+    epidemic = "Crear un paciente contagioso",
+    show_infected = "Mostrar/ocultar iconos de infección",
     create_patient = "Crear un paciente",
     end_month = "Fin de mes",
     end_year = "Fin del año",
@@ -1299,6 +1383,8 @@ cheats_window = {
     win_level = "Ganar el nivel",
     increase_prices = "Subir precios",
     decrease_prices = "Bajar precios",
+	reset_death_count = "Reiniciar contador de muertes",
+    max_reputation = "Reputatión máxima",
   },
   close = "Cerrar",
 }
@@ -1310,9 +1396,11 @@ tooltip.cheats_window = {
     all_research = "Completa todas las investigaciones.",
     emergency = "Crea una emergencia.",
     vip = "Crea un VIP.",
+	toggle_earthquake = "Activar terremotos",
     earthquake = "Crea un terremoto.",
+	toggle_epidemic = "Activar epidemias",
     epidemic = "Crea un paciente contagioso que podría provocar una epidemia.",
-    toggle_infected = "Muestra u oculta los iconos de infección para la epidemia activa.",
+    show_infected = "Muestra u oculta los iconos de infección para la epidemia activa.",
     create_patient = "Crea un paciente en el borde del mapa.",
     end_month = "Avanza hasta el fin del mes actual.",
     end_year = "Avanza hasta el final del año actual.",
@@ -1320,6 +1408,8 @@ tooltip.cheats_window = {
     win_level = "Hace que ganes el nivel actual.",
     increase_prices = "Aumenta los precios en un 50% (200% máximo).",
     decrease_prices = "Reduce los precios en un 50% (50% mínimo).",
+	reset_death_count = "Reinicia el contador de muertes del hospizal a cero",
+    max_reputation = "Establece la reputación del hospital al máximo",
   }
 }
 
@@ -1348,6 +1438,39 @@ tooltip.calls_dispatcher = {
   close = "Cerrar la ventana de llamadas de control.",
 }
 
+tooltip.machine_window = {
+  toggle_machine_menu = "Haz clic para abrir el menú de máquinas",								
+}
+
+machine_menu = {																									 
+  machine = "Máquina",
+  remaining_strength = "Restante",
+  total_strength = "Fuerza",
+  ratio = "Indice",
+  close = "Cerrar",
+}
+
+tooltip.machine_menu = {
+  sort = "Haz clic para ordenar por esta valor.",
+  machine = "Lista de máquinas - haz clic en una máquina para abrir su interfaz y desplazarte a su ubicación",
+  smoking = "Esta casilla está marcada si la máquina corre riesgo de explotar",
+  assigned = "Esta casilla está marcada si un operario de mantenimiento está asignado para reparar la máquina correspondiente",
+  remaining_strength = "Esta etiqueta muestra la fuerza restante de la máquina",
+  total_strength = "Muestra la fuerza total de la máquina",
+  ratio = "Muestra la relación entre la fuerza restante y la fuerza total",
+  header = {
+    smoking = "Indicador de peligro",
+    assigned = "Indicador de asignación",
+    machine = "Nombre y posición de la máquina",
+    remaining_strength = "Fuerza restante de las máquinas.",
+    total_strength = "Fuerza total de las máquinas.",
+    ratio = "Porcentaje de fuerza restante en relación con la fuerza total de las máquinas",
+    times_used = "Cantidad de veces que se ha usado la máquina.",
+  },
+  close = "Cerrar la lista de máquinas",
+				
+}
+
 update_window = {
   caption = "¡Actualización disponible!",
   new_version = "Versión nueva:",
@@ -1373,16 +1496,8 @@ map_editor_window = {
     west_wall = "Muro oeste",
     helipad = "Helipuerto",
     delete_wall = "Borrar muros",
-    parcel_0 = "Parcela 0",
-    parcel_1 = "Parcela 1",
-    parcel_2 = "Parcela 2",
-    parcel_3 = "Parcela 3",
-    parcel_4 = "Parcela 4",
-    parcel_5 = "Parcela 5",
-    parcel_6 = "Parcela 6",
-    parcel_7 = "Parcela 7",
-    parcel_8 = "Parcela 8",
-    parcel_9 = "Parcela 9",
+    parcel = "Parcela %d",
+	set_parcel_tooltip = "Ingresa un número y presiona enter.",
     camera_1 = "Cámara 1",
     camera_2 = "Cámara 2",
     camera_3 = "Cámara 3",
@@ -1392,39 +1507,10 @@ map_editor_window = {
     heliport_3 = "Helipuerto 3",
     heliport_4 = "Helipuerto 4",
     paste = "Pegar zona",
-  }
-}
-
-machine_menu = {
-  machine = "Máquina",
-  remaining_strength = "Restante",
-  total_strength = "Fuerza",
-  ratio = "Ratio",
-  close = "Cerrar",
-}
-
-tooltip.machine_menu = {
-  sort = "Haz clic para ordenar por esta valor.",
-  machine = "Lista de máquinas - haz clic en una máquina para abrir su interfaz y desplazarte a su ubicación",
-  smoking = "Esta casilla está marcada si la máquina corre riesgo de explotar",
-  assigned = "Esta casilla está marcada si un operario de mantenimiento está asignado para reparar la máquina correspondiente",
-  remaining_strength = "Esta etiqueta muestra la fuerza restante de la máquina",
-  total_strength = "Muestra la fuerza total de la máquina",
-  ratio = "Muestra la relación entre la fuerza restante y la fuerza total",
-  header = {
-    smoking = "Indicador de peligro",
-    assigned = "Indicador de asignación",
-    machine = "Nombre y posición de la máquina",
-    remaining_strength = "Fuerza restante de las máquinas.",
-    total_strength = "Fuerza total de las máquinas.",
-    ratio = "Porcentaje de fuerza restante en relación con la fuerza total de las máquinas",
-    times_used = "Cantidad de veces que se ha usado la máquina.",
   },
-  close = "Cerrar la lista de máquinas",
-}
-
-tooltip.machine_window = {
-  toggle_machine_menu = "Haga clic para desplegar el menú de máquinas",
+  checks = {
+    spawn_points_and_path = "Advertencia: Los pacientes no pueden llegar al hospital. Se necesitan casillas de 'carretera' o casillas grises de 'exterior' desde el borde del mapa hasta la entrada del hospital.",
+  },
 }
 
 hotkey_window = {
@@ -1439,8 +1525,27 @@ hotkeys_file_err = {
 }
 
 transactions.remove_room = "Construir: Eliminar habitación destruida"
+
+tooltip.status = {
+  over = {
+    staff_happiness = "La felicidad promedio del personal debería ser mayor a %d%. Actualmente es %d%",
+    patient_happiness = "La felicidad promedio de tus pacientes deberia ser mayor a %d%. Actualmente es %d%",
+  },
+  under = {
+    staff_happiness = "La felicidad promedio del personal no debería ser menor a %d%. Actualmente es %d%",
+    patient_happiness = "La felicidad promedio de tus pacientes no debería ser menor a %d%. Actualmente es %d%",
+  }
+}
 --------------------------------  UNUSED  -----------------------------------
 ------------------- (kept for backwards compatibility) ----------------------
 
 options_window.change_resolution = "Cambiar resolución"
 tooltip.options_window.change_resolution = "Cambia la resolución de la ventana utilizando la dimensión indicada a la izquierda."
+information.very_old_save = "Han habido muchas actualizaciones en el juego desde que comenzaste. Para asegurarte de que todas las características funcionen como se espera, considera reiniciar el nivel."
+
+cheats_window.cheats = {
+ toggle_infected = show_infected,
+}
+tooltip.cheats_window.cheats = {
+ toggle_infected = show_infected,
+}
