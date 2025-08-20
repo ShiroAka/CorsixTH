@@ -23,7 +23,6 @@ Inherit("english")
 Inherit("original_strings", 4)
 
 -------------------------------  OVERRIDE  ----------------------------------
-adviser.warnings.money_low = "Te estás quedando sin dinero."
 tooltip.graphs.reputation = "Cambiar reputación"
 tooltip.status.close = "Cerrar pantalla de estado"
 
@@ -763,8 +762,7 @@ adviser = {
     another_desk = "Necesitaras construir otro escritorio para la nueva recepcionista.",
     cannot_afford = "¡No tienes dinero para contratar a esa persona!", -- I can't see anything like this in the original strings
     cannot_afford_2 = "¡No tienes dinero para comprar eso!",
-	cannot_afford_machine = "Necesitas al menos $%1% en el banco para poder adquirir un nuevo %2%!",
-
+	  cannot_afford_machine = "Necesitas al menos $%1% en el banco para poder adquirir un nuevo %2%!",
     falling_1 = "¡Eh! No tiene gracia. Mira dónde haces clic con ese ratón, ¡vas a hacer daño a alguien!",
     falling_2 = "¿Te importaría dejar de perder el tiempo?",
     falling_3 = "¡Ay! Eso ha tenido que doler. ¡Llamen a un médico!",
@@ -782,8 +780,10 @@ adviser = {
     high_prices = "Estás cobrando mucho por %s. Esto traerá muchos beneficios a corto plazo, pero harás que los pacientes dejen de venir.",
     fair_prices = "El precio de %s parece justo.",
     patient_not_paying = "¡Un paciente se ha ido sin pagar por %s porque es demasiado caro!",
-	no_doctor_no_gp_office = "Deberias construir una Consulta y contratar un doctor en algun momento!",
-    no_gp_office = "No has construido una Consulta donde tus doctores puedan diagnosticar a los pacientes!",
+	  no_doctor_no_gp_office = "¡Deberías construir una CONSULTA y contratar un doctor en algún momento!",
+    no_gp_office = "¡No has construido una CONSULTA donde tus doctores puedan diagnosticar a los pacientes!",
+    money_low = "Te estás quedando sin dinero.",
+    cannot_buy = "¡No puedes comprar más de ese objeto!",
   },
   cheats = {
     th_cheat = "¡Felicidades, has desbloqueado los trucos!",
@@ -922,7 +922,7 @@ save_game_window = {
   caption = "Guardar partida (%1%)",
   new_save_game = "Nueva partida guardada",
   save_button = "Guardar",
-  missing_filename = "Por favor ingresa el nombre de la partida que deseas guardar o seleccione una existente para sobreescribirla.",
+  missing_filename = "Por favor ingresa el nombre de la partida que deseas guardar o selecciona una existente para sobreescribirla.",
 }
 
 tooltip.save_game_window = {
@@ -1009,6 +1009,7 @@ tooltip.options_window = {
   language = "Selecciona el idioma de los textos.",
   select_language = "Selecciona el idioma del juego.",
   language_dropdown_item = "Seleccionar el idioma %s.",
+  language_dropdown_no_font = "Selecciona una fuente en las opciones de carpeta para habilitar este lenguaje"
   back = "Cierra la ventana de opciones.",
   scrollspeed = "Establece la velocidad de desplazamiento de 1 (más lenta) a 10 (más rápida). El valor por defecto es 2.",
   shift_scrollspeed = "Establece la velocidad de desplazamiento (cuando la tecla Shift se encuentra presionada) de 1 (más lenta) a 10 (más rápida). El valor por defecto es 4.",
@@ -1183,7 +1184,7 @@ tooltip.hotkey_window = {
   button_accept = "Aceptar y guardar las teclas de acceso rápido asignadas",
   button_defaults = "Reestablecer las teclas de acceso rápido a los valores por defecto",
   button_cancel = "Cancelar las teclas asignadas y volver al menú de opciones",
-  panel_globalKeys = "Asignar atajos de teclado",
+  panel_globalKeys = "Asignar atajos globales de teclado",
   panel_generalInGameKeys = "Asignar atajos de teclado dentro del juego",
   button_gameSpeedKeys = "Abre la ventana para configurar las teclas que controlan la velocidad del juego",
   panel_scrollKeys = "Asignar atajos para desplazar la pantalla",
@@ -1250,7 +1251,6 @@ errors = {
   load_prefix = "Error al cargar la partida: ",
   load_map_prefix = "Error al cargar el mapa: ",
   load_level_prefix = "Error al cargar el nivel: ",
-
   no_games_to_contine = "No hay partidas guardadas.",
   load_quick_save = "Error, no existe el guardado rápido y por tanto no se puede cargar, pero tranquilo, que acabamos de generar uno para ti.",
   map_file_missing = "¡No se ha podido encontrar el archivo de mapa %s de este nivel!",
@@ -1276,7 +1276,7 @@ errors = {
     incorrect_level_number = "El número nivel debe estar entre 1 y 12. El valor actual es ",
     missing_setting = "No se ha especificado la dificultad ni el numero de nivel para el nivel personalizado.",
   },
-  cannot_restart_missing_files = "Sorry, but this level cannot be restarted because of missing files %s or %s.",
+  cannot_restart_missing_files = "Lo siento, este nivel no puede ser reiniciado debido a archivos faltantes %s o %s.",
 }
 
 warnings = {
@@ -1309,7 +1309,7 @@ information = {
     balance = "Tu cuenta bancaria ha llegado a tener menos de %d.",
     percentage_killed = "Has matado a más de un %d por ciento de los pacientes.",
     cheat = "¡Espero que no hayas hecho clic en el botón 'Perder Nivel' por accidente!",
-	staff_happiness = "La felicidad promedio del personal cayó debajo de %d%.",
+	  staff_happiness = "La felicidad promedio del personal cayó debajo de %d%.",
     patient_happiness = "La felicidad promedio de los pacientes cayó debajo de %d%.",
   },
   cheat_not_possible = "No puedes usar ese truco en este nivel.",
@@ -1371,9 +1371,9 @@ cheats_window = {
     all_research = "Truco de todo investigado",
     emergency = "Crear una emergencia",
     vip = "Crear un VIP",
-	toggle_earthquake = "Activar terremotos",
+	  toggle_earthquake = "Activar terremotos",
     earthquake = "Crear terremoto",
-	toggle_epidemic = "Activar epidemias",
+	  toggle_epidemic = "Activar epidemias",
     epidemic = "Crear un paciente contagioso",
     show_infected = "Mostrar/ocultar iconos de infección",
     create_patient = "Crear un paciente",
@@ -1383,7 +1383,7 @@ cheats_window = {
     win_level = "Ganar el nivel",
     increase_prices = "Subir precios",
     decrease_prices = "Bajar precios",
-	reset_death_count = "Reiniciar contador de muertes",
+	  reset_death_count = "Reiniciar contador de muertes",
     max_reputation = "Reputatión máxima",
   },
   close = "Cerrar",
@@ -1396,9 +1396,9 @@ tooltip.cheats_window = {
     all_research = "Completa todas las investigaciones.",
     emergency = "Crea una emergencia.",
     vip = "Crea un VIP.",
-	toggle_earthquake = "Activar terremotos",
+	  toggle_earthquake = "Activar terremotos",
     earthquake = "Crea un terremoto.",
-	toggle_epidemic = "Activar epidemias",
+	  toggle_epidemic = "Permite elegir si las epidemias ocurrirán",
     epidemic = "Crea un paciente contagioso que podría provocar una epidemia.",
     show_infected = "Muestra u oculta los iconos de infección para la epidemia activa.",
     create_patient = "Crea un paciente en el borde del mapa.",
@@ -1408,7 +1408,7 @@ tooltip.cheats_window = {
     win_level = "Hace que ganes el nivel actual.",
     increase_prices = "Aumenta los precios en un 50% (200% máximo).",
     decrease_prices = "Reduce los precios en un 50% (50% mínimo).",
-	reset_death_count = "Reinicia el contador de muertes del hospizal a cero",
+	  reset_death_count = "Reinicia el contador de muertes del hospital a cero",
     max_reputation = "Establece la reputación del hospital al máximo",
   }
 }
@@ -1422,6 +1422,7 @@ introduction_texts = {
     "Procura que tu reputación no caiga por debajo de 300 y no mates a más del 40% de tus pacientes o perderás el nivel." ..
     "¡Suerte!",
 }
+introduction_texts[1] = "Intenta alcanzar una reputación de 300, un saldo bancario de 10.000 dólares y cura a 40 personas."
 
 calls_dispatcher = {
   -- Dispatcher description message. Visible in Calls Dispatcher dialog
@@ -1496,7 +1497,8 @@ map_editor_window = {
     helipad = "Helipuerto",
     delete_wall = "Borrar muros",
     parcel = "Parcela %d",
-	set_parcel_tooltip = "Ingresa un número y presiona enter.",
+    set_parcel_tooltip = "Ingresa un número y presiona enter.",
+    set_parcel = "Ingresar número de parcela",
     camera_1 = "Cámara 1",
     camera_2 = "Cámara 2",
     camera_3 = "Cámara 3",
@@ -1506,6 +1508,16 @@ map_editor_window = {
     heliport_3 = "Helipuerto 3",
     heliport_4 = "Helipuerto 4",
     paste = "Pegar zona",
+    parcel_0 = "Parcela 0",
+    parcel_1 = "Parcela 1",
+    parcel_2 = "Parcela 2",
+    parcel_3 = "Parcela 3",
+    parcel_4 = "Parcela 4",
+    parcel_5 = "Parcela 5",
+    parcel_6 = "Parcela 6",
+    parcel_7 = "Parcela 7",
+    parcel_8 = "Parcela 8",
+    parcel_9 = "Parcela 9",
   },
   checks = {
     spawn_points_and_path = "Advertencia: Los pacientes no pueden llegar al hospital. Se necesitan casillas de 'carretera' o casillas grises de 'exterior' desde el borde del mapa hasta la entrada del hospital.",
@@ -1514,6 +1526,7 @@ map_editor_window = {
 
 hotkey_window = {
   ingame_panel_machineMenu = "Menú de Máquinas",
+  ingame_toggleTransparent = "Habilitar transparencias"
 }
 
 hotkeys_file_err = {
@@ -1535,6 +1548,18 @@ tooltip.status = {
     patient_happiness = "La felicidad promedio de tus pacientes no debería ser menor a %d%. Actualmente es %d%",
   }
 }
+
+level_progress = {
+  cured_enough_patients = "Has curado suficientes pacientes, pero necesitas organizar mejor tu hospital para superar el nivel.",
+  hospital_value_enough = "Manten el valor de tu hospital por encima de %d y atiende tus otros problemas para superar el nivel."
+}
+
+multiplayer = {
+  players_failed = "Los siguientes jugadores no lograron completar el último objetivo:",
+  everyone_failed = "Ninguno de los jugadores ha logrado completar el último objetivo, por lo que todos pueden continuar jugando!"
+}
+
+disease_discovered_patient_choice.need_to_employ = "Emplea a un %s para poder manejar esta situación."
 --------------------------------  UNUSED  -----------------------------------
 ------------------- (kept for backwards compatibility) ----------------------
 
